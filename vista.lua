@@ -249,6 +249,10 @@ function vista.xrandr.menu()
               { "Ext &below native", set(true, true, "below") },
               { "Ext &left of native", set(true, true, "leftof") },
               { "Ext &right of native", set(true, true, "rightof") } } } }
+   else
+      return {
+         { "&Only", {
+              { "&Native", set(true, false) } } } }
    end
 end
 
