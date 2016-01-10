@@ -26,9 +26,9 @@ end
 function clock.new(width)
    local _date = wibox.widget.textbox()
    local _time = wibox.widget.textbox()
-   local _widget = l.exact { l.fixed { l.center { _date, horizontal = true },
+   local _widget = l.exact { l.flex { l.center { _date, horizontal = true },
                                        l.center { _time, horizontal = true },
-                                       vertical = true },
+                                       horizontal = true },
                              width = math.max(58, width) }
    _widget.t_date = _date
    _widget.t_time = _time

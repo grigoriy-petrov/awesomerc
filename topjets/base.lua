@@ -1,9 +1,10 @@
 local iconic = require('iconic')
 local utility = require('utility')
 local vista = require('vista')
+local beautiful   = require('beautiful')
 
 -- Basis for all topjets widgets
-local base = { tooltip_position = "bottom_right",
+local base = { tooltip_position = beautiful.tooltip_position,
                tooltip_icon_size_dpi = 48 }
 
 local function constructor(wdg_class)
