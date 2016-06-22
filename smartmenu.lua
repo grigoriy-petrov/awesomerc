@@ -26,11 +26,15 @@ end
 
 function smartmenu.show()
    local mainmenu = { items = {
-                         { '&awesome', { { "restart", awesome.restart },
-                                         { "quit", awesome.quit } } },
+                         { '&awesome', { { "&restart", awesome.restart },
+                                         { "&quit", awesome.quit } } },
                          -- { '&flashmanager', flashmanager() },
                          -- { '&music', function() utility.spawn_in_terminal("ncmpc") end },
-                         { '&display', vista.xrandr.menu() } },
+                         { '&system', { {"&reboot", function() utility.spawn_in_terminal("reboot")        end}
+
+                         } },
+                         { '&display', vista.xrandr.menu() } 
+                         },
                       theme = { width = vista.scale(150) } }
    local m = menu(mainmenu)
    m:show()

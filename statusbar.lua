@@ -29,15 +29,19 @@ function statusbar.create(s)
    if not statusbar.initialized then
       statusbar.initialize()
    end
-   local l
+   -- local l
    local w = widgets
    local I = widgets.separator
 
    l = { left = { w.menu_icon, I, w.tags[s], I, w.prompt[s] },
          middle = w.programs[s],
          right = { 
-         w.systray, I,
+         s == 1 and w.systray or I, 
+          I,
          wrap_arrow({w.kbd}, true),
+         -- l.exact{ l.center { w.net, horizontal = true },
+                             -- width = 58 },
+         w.net,
          wrap_arrow({w.cpu_text, w.cpu, w.mem}, true),
          w.vol, I,
          w.battery, I,
@@ -153,6 +157,9 @@ widgets.systray = wibox.widget.systray()
 -- Register widget
 --vicious.register(widgets.cpuw, vicious.widgets.cpu, "$1%")
 
+-- Network widget
+   widgets.net = topjets.network(is_vertical)
+   widgets.net:buttons(keymap("LMB", terminal_with("sudo wifi-menu")))
 
   -- Clock widget
   -- widgets.time = topjets.clock(options.width)
