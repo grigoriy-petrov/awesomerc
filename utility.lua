@@ -186,6 +186,14 @@ function utility.refocus()
    if client.focus then client.focus:raise() end
 end
 
+function utility.focus_on_last_in_history( screen )
+  local c = awful.client.focus.history.get(screen, 0)
+        if not (c == nil) then
+          client.focus = c
+          c:raise()
+        end
+end
+
 function utility.round(n)
    local s, f = math.modf(n)
    if f >= 0.5 then return s + 1 else return s end

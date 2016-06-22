@@ -356,26 +356,8 @@ root.keys(globalkeys)
 
 -- Signals
 --Signal function to execute when a new client appears.
-tag.connect_signal(
-  "property::selected",
-  function (t)
-    local selected = tostring(t.selected) == "false"
-    if selected then
-      local focus_timer = timer({ timeout = 0.02 })
-      focus_timer:connect_signal("timeout", function()
-        local c = awful.mouse.client_under_pointer()
-        if not (c == nil) then
-          client.focus = c
-          c:raise()
-        end
-        focus_timer:stop()
-      end)
-      focus_timer:start()
-    end
-  end
-)
-
-
+client.connect_signal("unmanage", function() utility.focus_on_last_in_history(mouse.screen) end)
+tag.connect_signal("property::selected", function() utility.focus_on_last_in_history(mouse.screen) end)
 
 
 client.connect_signal("manage",

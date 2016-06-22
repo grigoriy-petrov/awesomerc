@@ -24,6 +24,7 @@
 -- with focus.
 
 local awful  = require("awful")
+local utility  = require("utility")
 
 -- Module "quake"
 local quake = { }
@@ -163,6 +164,9 @@ end
 function QuakeConsole:toggle()
    self.visible = not self.visible
    self:display()
+   if not self.visible then
+      utility.focus_on_last_in_history(mouse.screen)   
+   end  
 end
 
 function quake.toggle(args)
