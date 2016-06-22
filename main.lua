@@ -266,6 +266,7 @@ globalkeys = utility.keymap(
 
 clientkeys = utility.keymap(
   "M-f",       function (c) c.fullscreen = not c.fullscreen  end,
+  "M-S-c",     function (c) c:kill()                         end,
   "M-k",       function (c) c:kill()                         end,
   "M-C-space", awful.client.floating.toggle                     ,
   "M-o",       function(c) vista.movetoscreen(c, nil, true) end,
